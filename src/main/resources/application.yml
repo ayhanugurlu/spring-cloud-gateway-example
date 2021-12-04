@@ -1,0 +1,27 @@
+logging:
+  level:
+    root: DEBUG
+    nl.ymor: DEBUG
+    reactor: DEBUG
+    org.springframework: DEBUG
+
+
+
+server:
+  port: 80
+
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: query_route
+          uri: https://www.yahoo.com
+          predicates:
+            - Query=search
+
+        - id: path_route
+          uri: https://www.google.com
+          predicates:
+            - Path=/**
+
